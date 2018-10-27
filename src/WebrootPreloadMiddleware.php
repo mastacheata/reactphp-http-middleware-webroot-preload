@@ -96,7 +96,7 @@ final class WebrootPreloadMiddleware
             if ($request->hasHeader('If-Match')) {
                 $expectedEtag = current($request->getHeader('If-Match'));
                 $expectedEtag = trim($expectedEtag, '"');
-                if ($expectedEtag !== $item['etag']) {
+                if ($expectedEtag !== '*' && $expectedEtag !== $item['etag']) {
                     return new Response(412);
                 }
             }
